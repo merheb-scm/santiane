@@ -27,7 +27,8 @@ class Voyage extends Model
     public function getCityFromToAttribute() {
         $firstStep = $this->steps()->orderBy('departure_date', 'asc')->first() ;
         $lastStep = $this->steps()->orderBy('arrival_date', 'desc')->first() ;
-        return (isset($firstStep) && isset($lastStep)) ? (isset($firstStep) ? $firstStep->departure : '')
+        return (isset($firstStep) && isset($lastStep)) ?
+            (isset($firstStep) ? $firstStep->departure : '')
             . ' - ' .
             (isset($lastStep) ? $lastStep->arrival : '') : '';
     }
@@ -35,7 +36,8 @@ class Voyage extends Model
     public function getDateFromToAttribute() {
         $firstStep = $this->steps()->orderBy('departure_date', 'asc')->first() ;
         $lastStep = $this->steps()->orderBy('arrival_date', 'desc')->first() ;
-        return (isset($firstStep) && isset($lastStep)) ? (isset($firstStep) ? Carbon::parse($lastStep->departure_date)->format('d M Y H:i') : '')
+        return (isset($firstStep) && isset($lastStep)) ?
+            (isset($firstStep) ? Carbon::parse($firstStep->departure_date)->format('d M Y H:i') : '')
             . ' - ' .
             (isset($lastStep) ? Carbon::parse($lastStep->arrival_date)->format('d M Y H:i') : '') : '';
     }

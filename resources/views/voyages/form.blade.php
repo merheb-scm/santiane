@@ -165,10 +165,16 @@
             }) ;
 
             $('#step_type').on('change', function () {
-                if ($('#step_type').val() == 'plane') {
+                if ($('#step_type').val() == 'car') {
+                    $('#seat').parent('.form-group').hide() ;
+                    $('#gate').parent('.form-group').hide() ;
+                    $('#baggage_drop').parent('.form-group').hide() ;
+                } else if ($('#step_type').val() == 'plane') {
+                    $('#seat').parent('.form-group').show() ;
                     $('#gate').parent('.form-group').show() ;
                     $('#baggage_drop').parent('.form-group').show() ;
                 } else {
+                    $('#seat').parent('.form-group').show() ;
                     $('#gate').parent('.form-group').hide() ;
                     $('#baggage_drop').parent('.form-group').hide() ;
                 }
@@ -221,6 +227,7 @@
 
                 $('#departure_date').val(data.departure_date) ;
                 $('#arrival_date').val(data.arrival_date) ;
+                $("html, body").animate({ scrollTop: 0 }, "slow");
             });
 
             $(tblName).on('click', '.delete.btn', function (e) {
